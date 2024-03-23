@@ -1,0 +1,309 @@
+{
+    "items": [
+        {
+            "name": "聖光Esports同好会",
+            "type": "体験",
+            "classroom": "高3A"
+        },
+        {
+            "name": "高3英語劇",
+            "type": "劇・演技",
+            "classroom": "高3B"
+        },
+        {
+            "name": "生徒会展示",
+            "type": "体験",
+            "classroom": "高3C"
+        },
+        {
+            "name": "ディズニー同好会",
+            "type": "体験",
+            "classroom": "高3D"
+        },
+        {
+            "name": "料理同好会",
+            "type": "食品",
+            "classroom": "高3E"
+        },
+        {
+            "name": "早撃ちジョニー",
+            "type": "体験",
+            "classroom": "高3F"
+        },
+        {
+            "name": "SeSDA",
+            "type": "食品",
+            "classroom": "高3ラウンジ"
+        },
+        {
+            "name": "執行部景品",
+            "type": "その他",
+            "classroom": "高校ゼミ室1"
+        },
+        {
+            "name": "保護者バザー",
+            "type": "販売",
+            "classroom": "中1A"
+        },
+        {
+            "name": "生徒会展示",
+            "type": "体験",
+            "classroom": "中1B"
+        },
+        {
+            "name": "受験相談",
+            "type": "体験",
+            "classroom": "中1C"
+        },
+        {
+            "name": "昭和歌謡研究会",
+            "type": "鑑賞",
+            "classroom": "中1D"
+        },
+        {
+            "name": "医療相談",
+            "type": "鑑賞",
+            "classroom": ""
+        },
+        {
+            "name": "数学研究会",
+            "type": "体験",
+            "classroom": "中1E"
+        },
+        {
+            "name": "聖光道場",
+            "type": "体験",
+            "classroom": "中1UT"
+        },
+        {
+            "name": "インターアクトクラブ（食品店舗）",
+            "type": "食品",
+            "classroom": "中1ラウンジ"
+        },
+        {
+            "name": "駅弁",
+            "type": "食品",
+            "classroom": "高2A"
+        },
+        {
+            "name": "ご当地研究会",
+            "type": "鑑賞",
+            "classroom": "高2B"
+        },
+        {
+            "name": "物理化学部",
+            "type": "体験",
+            "classroom": "高2C"
+        },
+        {
+            "name": "地学天文部",
+            "type": "鑑賞",
+            "classroom": "高2D"
+        },
+        {
+            "name": "ボードゲーム同好会",
+            "type": "体験",
+            "classroom": "高2E"
+        },
+        {
+            "name": "ガンダム研究会",
+            "type": "鑑賞",
+            "classroom": "高2F"
+        },
+        {
+            "name": "〜占いの館〜",
+            "type": "体験",
+            "classroom": "高2ラウンジ"
+        },
+        {
+            "name": "ボールぽこぽこ",
+            "type": "体験",
+            "classroom": "吹き抜け"
+        },
+        {
+            "name": "古本市（ビブリオバトル）",
+            "type": "販売",
+            "classroom": "図書PC室"
+        },
+        {
+            "name": "古本市",
+            "type": "販売",
+            "classroom": "図書室"
+        },
+        {
+            "name": "わたあめ",
+            "type": "食品",
+            "classroom": "中2A"
+        },
+        {
+            "name": "ぶいえいす",
+            "type": "体験",
+            "classroom": "中2B"
+        },
+        {
+            "name": "Trick×Hark",
+            "type": "鑑賞",
+            "classroom": "中2C"
+        },
+        {
+            "name": "Trick×Hark",
+            "type": "鑑賞",
+            "classroom": "中2D"
+        },
+        {
+            "name": "ぎゃんぶる。",
+            "type": "体験",
+            "classroom": "中2E"
+        },
+        {
+            "name": "管理部門",
+            "type": "#N/A",
+            "classroom": "中2UT"
+        },
+        {
+            "name": "聖光縁日",
+            "type": "体験",
+            "classroom": "中2ラウンジ"
+        },
+        {
+            "name": "コンピュータ部",
+            "type": "体験",
+            "classroom": "中教室1"
+        },
+        {
+            "name": "教室劇",
+            "type": "劇・演技",
+            "classroom": "中教室2"
+        },
+        {
+            "name": "ライブハウス",
+            "type": "企画",
+            "classroom": "音楽室2"
+        },
+        {
+            "name": "オルガン",
+            "type": "企画",
+            "classroom": "聖堂"
+        },
+        {
+            "name": "聖書研究会",
+            "type": "鑑賞",
+            "classroom": "宗教準備室"
+        },
+        {
+            "name": "交通研究部",
+            "type": "体験",
+            "classroom": "高1A"
+        },
+        {
+            "name": "交通研究部",
+            "type": "体験",
+            "classroom": "高1B"
+        },
+        {
+            "name": "プロ野球研究会",
+            "type": "体験",
+            "classroom": "高1C"
+        },
+        {
+            "name": "クイズ研究会",
+            "type": "体験",
+            "classroom": "高1D"
+        },
+        {
+            "name": "SeSDA",
+            "type": "体験",
+            "classroom": "高1E"
+        },
+        {
+            "name": "模型同好会",
+            "type": "鑑賞",
+            "classroom": "高1ラウンジ"
+        },
+        {
+            "name": "生物部",
+            "type": "鑑賞",
+            "classroom": "生物実験室"
+        },
+        {
+            "name": "地学天文部",
+            "type": "体験",
+            "classroom": "共通実験室"
+        },
+        {
+            "name": "物理科学部",
+            "type": "体験",
+            "classroom": "物理実験室"
+        },
+        {
+            "name": "ポケモンセンターSeiko",
+            "type": "鑑賞",
+            "classroom": "中3A"
+        },
+        {
+            "name": "カードゲーム同好会",
+            "type": "体験",
+            "classroom": "中3B"
+        },
+        {
+            "name": "食品店舗(たぶん音楽喫茶)",
+            "type": "食品",
+            "classroom": "中3C"
+        },
+        {
+            "name": "地理歴史巡見部",
+            "type": "鑑賞",
+            "classroom": "中3D"
+        },
+        {
+            "name": "地理歴史巡見部",
+            "type": "鑑賞",
+            "classroom": "中3E"
+        },
+        {
+            "name": "手荷物預かり所",
+            "type": "その他",
+            "classroom": "中3UT"
+        },
+        {
+            "name": "ボカロDTM同好会",
+            "type": "鑑賞",
+            "classroom": "中3ラウンジ"
+        },
+        {
+            "name": "かるた会",
+            "type": "鑑賞",
+            "classroom": "和室"
+        },
+        {
+            "name": "エースをねらえ！",
+            "type": "体験",
+            "classroom": "屋上テニスコート"
+        },
+        {
+            "name": "魔女の卓球便",
+            "type": "体験",
+            "classroom": "第2体育館"
+        },
+        {
+            "name": "美術部展示",
+            "type": "鑑賞",
+            "classroom": "美術室"
+        },
+        {
+            "name": "芸術講座",
+            "type": "鑑賞",
+            "classroom": "技術工作室"
+        },
+        {
+            "name": "リアル野球盤",
+            "type": "体験",
+            "classroom": "グラウンド"
+        },
+        {
+            "name": "SeSDA",
+            "type": "体験",
+            "classroom": "グラウンド"
+        }
+    ]
+}

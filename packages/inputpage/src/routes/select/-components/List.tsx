@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { selectedTeam, userState } from "../../../state";
+import { selectedTeam, selectedTeamIdState, userState } from "../../../state";
 import { data } from "../../../list";
 import { useEffect } from "react";
 
@@ -8,9 +8,14 @@ const items = data.items;
 export const List = () => {
     const [team, setTeam] = useRecoilState(selectedTeam);
     const [user, setUser] = useRecoilState(userState);
+    const [teamId, setTeamId] = useRecoilState(selectedTeamIdState);
 
     const onChanged = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setTeam(e.target.value);
+        const selectedItem = items.find(item => item.name === e.target.value);
+        if (selectedItem) {
+            setTeamId(selectedItem.exhibitionId!);
+        }
     }
 
     useEffect(() => {

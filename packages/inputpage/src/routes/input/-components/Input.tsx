@@ -1,10 +1,29 @@
-import { useState } from 'react';
+import { selectedTeamIdState, congestionState, lastSubmittedDateState } from "../../../state";
+import { useRecoilState } from "recoil";
+
+import { set } from "../../../firebase/db/set";
 
 export const InputBody = () => {
-    const [congestion, setCongestion] = useState('');
+    const [congestion, setCongestion] = useRecoilState(congestionState);
+    const [lastSubmittedDate, setSubmittedDate] = useRecoilState(lastSubmittedDateState);
+    const [exhibitionId] = useRecoilState(selectedTeamIdState);
 
     const handleClick = (value: string) => {
         setCongestion(value);
+    };
+
+    const handleSubmit = async () => {
+        setSubmittedDate(new Date());
+        if (!congestion || !exhibitionId) {
+            alert('混雑度を選択してください');
+            return;
+        }
+        try {
+            await set(new Date(), congestion, exhibitionId);
+            alert('送信しました');
+        } catch (e) {
+            alert(e);
+        }
     };
 
     return (
@@ -30,6 +49,12 @@ export const InputBody = () => {
                     高
                 </button>
             </div>
+            <button
+                className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-500"
+                onClick={() => handleSubmit()}
+            >
+                送信
+            </button>
         </div>
     );
 };

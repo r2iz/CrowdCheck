@@ -2,7 +2,7 @@ import { atom } from 'recoil';
 
 export const selectedTeam = atom({
     key: 'selectedTeam',
-    default: '聖光Esports同好会',
+    default: null,
 });
 
 export const loginState = atom({

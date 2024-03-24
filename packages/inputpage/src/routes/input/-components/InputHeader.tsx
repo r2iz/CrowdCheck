@@ -1,4 +1,4 @@
-import { selectedTeam } from "../state";
+import { selectedTeam } from "../../../state";
 import { useRecoilState } from "recoil";
 
 export const InputHeader = () => {

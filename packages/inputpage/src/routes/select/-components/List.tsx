@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
-import { selectedTeam } from "../state";
-import { data } from "../list";
+import { selectedTeam } from "../../../state";
+import { data } from "../../../list";
 import { useEffect } from "react";
 
 const items = data.items;

@@ -1,6 +1,6 @@
 import { createLazyFileRoute, useNavigate } from "@tanstack/react-router";
-import { List } from '../components/List';
-import { Header } from '../components/Header';
+import { List } from './-components/List';
+import { Header } from '../-components/Header';
 
 export const Route = createLazyFileRoute("/select")({
   component: Select,

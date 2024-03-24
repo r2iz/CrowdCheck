@@ -1,5 +1,5 @@
 import { createLazyFileRoute, useNavigate } from '@tanstack/react-router';
-import { Header } from '../components/Header';
+import { Header } from './-components/Header';
 import { useRecoilState } from 'recoil';
 import { loginState, userState, selectedTeam } from '../state';
 

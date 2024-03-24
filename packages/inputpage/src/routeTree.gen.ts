@@ -16,27 +16,21 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
-const SelectLazyImport = createFileRoute('/select')()
-const InputLazyImport = createFileRoute('/input')()
-const AboutLazyImport = createFileRoute('/about')()
+const SelectRouteLazyImport = createFileRoute('/select')()
+const InputRouteLazyImport = createFileRoute('/input')()
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
 
-const SelectLazyRoute = SelectLazyImport.update({
+const SelectRouteLazyRoute = SelectRouteLazyImport.update({
   path: '/select',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/select.lazy').then((d) => d.Route))
+} as any).lazy(() => import('./routes/select/route.lazy').then((d) => d.Route))
 
-const InputLazyRoute = InputLazyImport.update({
+const InputRouteLazyRoute = InputRouteLazyImport.update({
   path: '/input',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/input.lazy').then((d) => d.Route))
-
-const AboutLazyRoute = AboutLazyImport.update({
-  path: '/about',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
+} as any).lazy(() => import('./routes/input/route.lazy').then((d) => d.Route))
 
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
@@ -51,16 +45,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
-    '/about': {
-      preLoaderRoute: typeof AboutLazyImport
-      parentRoute: typeof rootRoute
-    }
     '/input': {
-      preLoaderRoute: typeof InputLazyImport
+      preLoaderRoute: typeof InputRouteLazyImport
       parentRoute: typeof rootRoute
     }
     '/select': {
-      preLoaderRoute: typeof SelectLazyImport
+      preLoaderRoute: typeof SelectRouteLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -70,9 +60,8 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexLazyRoute,
-  AboutLazyRoute,
-  InputLazyRoute,
-  SelectLazyRoute,
+  InputRouteLazyRoute,
+  SelectRouteLazyRoute,
 ])
 
 /* prettier-ignore-end */

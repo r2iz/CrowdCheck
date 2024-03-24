@@ -18,12 +18,13 @@ export const InputBody = () => {
             alert('混雑度を選択してください');
             return;
         }
-        try {
-            await set(new Date(), congestion, exhibitionId);
-            alert('送信しました');
-        } catch (e) {
-            alert(e);
+        const now = new Date();
+        if (lastSubmittedDate && now.getTime() - lastSubmittedDate.getTime() < 5 * 60 * 1000) {
+            alert('5分以内に送信したため、送信できません');
+            return;
         }
+        await set(new Date(), congestion, exhibitionId);
+        alert('送信しました');
     };
 
     return (

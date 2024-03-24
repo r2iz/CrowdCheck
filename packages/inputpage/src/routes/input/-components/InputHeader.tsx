@@ -1,10 +1,22 @@
-import { selectedTeam, lastSubmittedDateState } from "../../../state";
+import { selectedTeam, selectedTeamIdState, lastSubmittedDateState } from "../../../state";
 import { useRecoilState } from "recoil";
+
+import { get } from "../../../firebase/db/get";
 
 export const InputHeader = () => {
     const [team] = useRecoilState(selectedTeam);
-    const [lastSubmittedDate] = useRecoilState(lastSubmittedDateState);
-    const text = lastSubmittedDate ? `${lastSubmittedDate?.getHours()}時${lastSubmittedDate?.getMinutes()}分` : '未送信';
+    const [lastSubmittedDate, setSubmittedDate] = useRecoilState(lastSubmittedDateState);
+    const [teamId] = useRecoilState(selectedTeamIdState);
+    const text = lastSubmittedDate ? `${lastSubmittedDate?.getHours()}時${lastSubmittedDate?.getMinutes()}分` : "未送信";
+    if(text === "未送信") {
+        if(teamId) {
+            get(teamId).then((data) => {
+                if(data!.updatedDate) {
+                    setSubmittedDate(data!.updatedDate.toDate());
+                }
+            });
+        }
+    }
     return (
         <header className="text-gray-600 body-font fixed w-full">
             <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center md:justify-between">

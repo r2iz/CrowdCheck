@@ -14,5 +14,16 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'indent': ['warn', 4, {
+			'SwitchCase': 1,
+			'MemberExpression': 'off',
+			'flatTernaryExpressions': true,
+			'ArrayExpression': 'first',
+			'ObjectExpression': 'first',
+		}],
+    'semi': ['error', 'always'],
+    'semi-spacing': ['error', { 'before': false, 'after': true }],
+		'quotes': ['warn', 'double'],
+		'comma-dangle': ['warn', 'always-multiline'],
   },
 }

@@ -15,16 +15,16 @@ export const InputBody = () => {
     const handleSubmit = async () => {
         setSubmittedDate(new Date());
         if (!congestion || !exhibitionId) {
-            alert('混雑度を選択してください');
+            alert("混雑度を選択してください");
             return;
         }
         const now = new Date();
         if (lastSubmittedDate && now.getTime() - lastSubmittedDate.getTime() < 5 * 60 * 1000) {
-            alert('5分以内に送信したため、送信できません');
+            alert("5分以内に送信したため、送信できません");
             return;
         }
         await set(new Date(), congestion, exhibitionId);
-        alert('送信しました');
+        alert("送信しました");
     };
 
     return (
@@ -32,20 +32,20 @@ export const InputBody = () => {
             <h1 className="text-4xl font-bold text-indigo-600 mb-4">現在の混雑度を選択してください</h1>
             <div className=" space-y-2">
                 <button 
-                    className={`px-4 py-2 border m-8 border-indigo-600 rounded ${congestion === 'Low' ? 'bg-indigo-600 text-white' : 'text-indigo-600'}`}
-                    onClick={() => handleClick('Low')}
+                    className={`px-4 py-2 border m-8 border-indigo-600 rounded ${congestion === "Low" ? "bg-indigo-600 text-white" : "text-indigo-600"}`}
+                    onClick={() => handleClick("Low")}
                 >
                     低
                 </button>
                 <button 
-                    className={`px-4 py-2 border m-8 border-indigo-600 rounded ${congestion === 'Medium' ? 'bg-indigo-600 text-white' : 'text-indigo-600 '}`}
-                    onClick={() => handleClick('Medium')}
+                    className={`px-4 py-2 border m-8 border-indigo-600 rounded ${congestion === "Medium" ? "bg-indigo-600 text-white" : "text-indigo-600 "}`}
+                    onClick={() => handleClick("Medium")}
                 >
                     中
                 </button>
                 <button 
-                    className={`px-4 py-2 border m-8 border-indigo-600 rounded ${congestion === 'High' ? 'bg-indigo-600 text-white' : 'text-indigo-600'}`}
-                    onClick={() => handleClick('High')}
+                    className={`px-4 py-2 border m-8 border-indigo-600 rounded ${congestion === "High" ? "bg-indigo-600 text-white" : "text-indigo-600"}`}
+                    onClick={() => handleClick("High")}
                 >
                     高
                 </button>

@@ -1,11 +1,11 @@
-import { createLazyFileRoute, useNavigate } from '@tanstack/react-router';
-import { loginState } from '../../state';
-import { useRecoilState } from 'recoil';
+import { createLazyFileRoute, useNavigate } from "@tanstack/react-router";
+import { loginState } from "../../state";
+import { useRecoilState } from "recoil";
 
-import { InputHeader } from './-components/InputHeader';
-import { InputBody } from './-components/Input';
+import { InputHeader } from "./-components/InputHeader";
+import { InputBody } from "./-components/Input";
 
-export const Route = createLazyFileRoute('/input')({
+export const Route = createLazyFileRoute("/input")({
     component: Input,
 });
 
@@ -14,7 +14,7 @@ function Input() {
     const navigate = useNavigate();
     if (!login) {
         navigate({
-            to: '/',
+            to: "/",
         });
     }
     return(

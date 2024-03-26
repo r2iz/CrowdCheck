@@ -30,4 +30,4 @@ export const InputHeader = () => {
             </div>
         </header>
     );
-}
+};

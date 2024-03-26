@@ -1,17 +1,17 @@
-import { createLazyFileRoute, useNavigate } from '@tanstack/react-router';
-import { Header } from './-components/Header';
-import { useRecoilState } from 'recoil';
-import { loginState, userState, selectedTeam } from '../state';
+import { createLazyFileRoute, useNavigate } from "@tanstack/react-router";
+import { Header } from "./-components/Header";
+import { useRecoilState } from "recoil";
+import { loginState, userState, selectedTeam } from "../state";
 
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth, signInWithGoogle } from '../firebase/auth';
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, signInWithGoogle } from "../firebase/auth";
 
-import { useEffect, useState } from 'react';
-import { set } from 'firebase/database';
+import { useEffect, useState } from "react";
+import { set } from "firebase/database";
 
-export const Route = createLazyFileRoute('/')({
+export const Route = createLazyFileRoute("/")({
     component: Index,
-})
+});
 
 function Index() {
     const [login, setLogin] = useRecoilState(loginState);
@@ -24,7 +24,7 @@ function Index() {
     const onclick = () => {
         setLoading(true);
         signInWithGoogle();
-    }
+    };
 
     onAuthStateChanged(auth, (user) => {
         if(user) {
@@ -34,14 +34,14 @@ function Index() {
                 setUser(Number(id));
             }
             navigate({
-                to: '/select',
+                to: "/select",
             });
             setLoading(false);
         } else {
             setLogin(false);
             setUser(null);
             navigate({
-                to: '/',
+                to: "/",
             });
             setLoading(false);
         }
@@ -51,11 +51,11 @@ function Index() {
         if(login) {
             if(team !== null) {
                 navigate({
-                    to: '/input',
+                    to: "/input",
                 });
             } else {
                 navigate({
-                    to: '/select',
+                    to: "/select",
                 });
             }
         }
@@ -79,7 +79,7 @@ function Index() {
             <Header />
             <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
                 <div className="w-full space-y-8">
-                <h3 className='flex items-center justify-center text-xl'>展示団体チーフのアカウントでのみログインできます。</h3>
+                    <h3 className='flex items-center justify-center text-xl'>展示団体チーフのアカウントでのみログインできます。</h3>
                     <div className="flex justify-center">
                         <button onClick={onclick} className="group relative w-28 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
                             ログイン

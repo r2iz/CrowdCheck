@@ -5,11 +5,11 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 const signInWithGoogle = () => {
-  signInWithRedirect(auth, provider);
+    signInWithRedirect(auth, provider);
 };
 
 const signOutUser = () => {
-  signOut(auth);
+    signOut(auth);
 };
 
 export { auth, signInWithGoogle, signOutUser };

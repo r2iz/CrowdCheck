@@ -1,32 +1,32 @@
-import { atom } from 'recoil';
+import { atom } from "recoil";
 
 export const selectedTeam = atom({
-    key: 'selectedTeam',
+    key: "selectedTeam",
     default: null as string | null,
 });
 
 export const selectedTeamIdState = atom({
-    key: 'selectedTeamId',
+    key: "selectedTeamId",
     default: null as number | null,
 
 });
 
 export const loginState = atom({
-    key: 'loginState',
+    key: "loginState",
     default: false as boolean,
 });
 
 export const userState = atom({
-    key: 'userState',
+    key: "userState",
     default: null as number | null,
 });
 
 export const congestionState = atom({
-    key: 'congestionState',
+    key: "congestionState",
     default: null as string | null,
 });
 
 export const lastSubmittedDateState = atom({
-    key: 'lastSubmittedDateState',
+    key: "lastSubmittedDateState",
     default: null as Date | null,
 });

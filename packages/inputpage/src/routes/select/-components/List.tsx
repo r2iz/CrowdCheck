@@ -16,7 +16,7 @@ export const List = () => {
         if (selectedItem) {
             setTeamId(selectedItem.exhibitionId!);
         }
-    }
+    };
 
     useEffect(() => {
         console.log(team);

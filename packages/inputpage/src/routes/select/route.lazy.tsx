@@ -1,12 +1,12 @@
 import { createLazyFileRoute, useNavigate } from "@tanstack/react-router";
-import { List } from './-components/List';
-import { Header } from '../-components/Header';
+import { List } from "./-components/List";
+import { Header } from "../-components/Header";
 
 import { selectedTeam } from "../../state";
 import { useRecoilState } from "recoil";
 
 export const Route = createLazyFileRoute("/select")({
-  component: Select,
+    component: Select,
 });
 
 function Select() {
@@ -18,9 +18,9 @@ function Select() {
             return;
         }
         navigate({
-            to: '/input',
+            to: "/input",
         });
-    }
+    };
 
     return (
         <>

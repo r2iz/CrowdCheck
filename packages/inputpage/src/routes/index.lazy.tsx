@@ -6,7 +6,8 @@ import { loginState, userState, selectedTeam } from '../state';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth, signInWithGoogle } from '../firebase/auth';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { set } from 'firebase/database';
 
 export const Route = createLazyFileRoute('/')({
     component: Index,
@@ -16,10 +17,12 @@ function Index() {
     const [login, setLogin] = useRecoilState(loginState);
     const [user, setUser] = useRecoilState(userState);
     const [team] = useRecoilState(selectedTeam);
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
     const onclick = () => {
+        setLoading(true);
         signInWithGoogle();
     }
 
@@ -33,12 +36,14 @@ function Index() {
             navigate({
                 to: '/select',
             });
+            setLoading(false);
         } else {
             setLogin(false);
             setUser(null);
             navigate({
                 to: '/',
             });
+            setLoading(false);
         }
     });
 
@@ -55,6 +60,19 @@ function Index() {
             }
         }
     },[login, team, navigate]);
+
+    if (loading) {
+        return (
+            <>
+                <Header />
+                <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+                    <div className="w-full space-y-8">
+                        <h3 className='flex items-center justify-center text-xl'>ログイン中...</h3>
+                    </div>
+                </div>
+            </>
+        );
+    }
 
     return (
         <>

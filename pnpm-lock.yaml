@@ -10,6 +10,9 @@ importers:
 
   packages/displaypage:
     dependencies:
+      firebase:
+        specifier: ^10.9.0
+        version: 10.9.0
       react:
         specifier: ^18.2.0
         version: 18.2.0

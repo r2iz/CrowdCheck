@@ -11,7 +11,7 @@ export const Route = createLazyFileRoute("/select")({
 
 function Select() {
     const navigate = useNavigate();
-    const [team, setTeam] = useRecoilState(selectedTeam);
+    const [team] = useRecoilState(selectedTeam);
     const onclick = () => {
         if (team === null) {
             alert("団体を選択してください");

@@ -7,7 +7,6 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth, signInWithGoogle } from "../firebase/auth";
 
 import { useEffect, useState } from "react";
-import { set } from "firebase/database";
 
 export const Route = createLazyFileRoute("/")({
     component: Index,
@@ -20,6 +19,8 @@ function Index() {
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
+
+    console.log(login, user, team);
 
     const onclick = () => {
         setLoading(true);

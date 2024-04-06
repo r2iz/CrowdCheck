@@ -7,8 +7,10 @@ const items = data.items;
 
 export const List = () => {
     const [team, setTeam] = useRecoilState(selectedTeam);
-    const [user, setUser] = useRecoilState(userState);
+    const [user] = useRecoilState(userState);
     const [teamId, setTeamId] = useRecoilState(selectedTeamIdState);
+
+    console.log(teamId, user);
 
     const onChanged = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setTeam(e.target.value);

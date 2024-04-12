@@ -3,6 +3,8 @@ const admin = require("firebase-admin");
 
 admin.initializeApp();
 
+functions.region("asia-northeast1");
+
 exports.getCongestion = functions.https.onRequest(async (request, response) =>{
     const db = admin.firestore();
     const congestionRef = db.collection("exhibition");
@@ -18,5 +20,9 @@ exports.getCongestion = functions.https.onRequest(async (request, response) =>{
     });
     const cacheAge = 600;
     response.set("Cache-Control", `public, max-age=${cacheAge}`);
+    response.set('Access-Control-Allow-Headers', '*');
+    response.set('Access-Control-Allow-Origin', '*');
+    response.set('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST');
     response.status(200).send(congestionArray);
+    response.end();
 });

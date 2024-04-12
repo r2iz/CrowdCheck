@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import { Card } from "./Card";
 import { data } from "./list";
 
@@ -53,7 +53,7 @@ function App() {
     return (
         <div className="h-screen w-full bg-gradient-to-br from-violet-900 via-pink-700 to-orange-700 flex items-center justify-center">
             <header className="backdrop-blur-fg bg-gray-200/30 shadow-lg h-12 flex items-center pl-4 w-full absolute top-0">
-                <h1 className="text-2xl text-gray-900 font-bold">{floors[currentFloor]}階</h1>
+                <h1 className="text-2xl text-gray-900 font-bold">{floors[currentFloor] === 5 ? "その他" : `${floors[currentFloor]}階`}</h1>
             </header>
             <div className="flex flex-wrap justify-center mt-24">
                 {currentItems.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage).map((congestion) => {

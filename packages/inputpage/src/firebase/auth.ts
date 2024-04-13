@@ -1,4 +1,4 @@
-import { getAuth,  signInWithRedirect, signOut, GoogleAuthProvider } from "firebase/auth";
+import { getAuth,  signInWithRedirect, signOut, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { app } from "./init";
 
 const auth = getAuth(app);
@@ -8,8 +8,12 @@ const signInWithGoogle = () => {
     signInWithRedirect(auth, provider);
 };
 
+const signInWithGooglePopup = async () => {
+    await signInWithPopup(auth, provider);
+};
+
 const signOutUser = () => {
     signOut(auth);
 };
 
-export { auth, signInWithGoogle, signOutUser };
+export { auth, signInWithGooglePopup, signInWithGoogle, signOutUser };

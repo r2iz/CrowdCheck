@@ -4,7 +4,7 @@ import { useRecoilState } from "recoil";
 import { loginState, userState, selectedTeam } from "../state";
 
 import { onAuthStateChanged } from "firebase/auth";
-import { auth, signInWithGoogle } from "../firebase/auth";
+import { auth, signInWithGoogle, signInWithGooglePopup } from "../firebase/auth";
 
 import { useEffect, useState } from "react";
 
@@ -20,11 +20,15 @@ function Index() {
 
     const navigate = useNavigate();
 
-    console.log(login, user, team);
-
     const onclick = () => {
         setLoading(true);
-        signInWithGoogle();
+        console.log("onclick");
+        try {
+            console.log("try");
+            signInWithGoogle();
+        } catch (error) {
+            alert(error);
+        }
     };
 
     onAuthStateChanged(auth, (user) => {
@@ -48,19 +52,19 @@ function Index() {
         }
     });
 
-    useEffect(() => {
-        if(login) {
-            if(team !== null) {
-                navigate({
-                    to: "/input",
-                });
-            } else {
-                navigate({
-                    to: "/select",
-                });
-            }
-        }
-    },[login, team, navigate]);
+    // useEffect(() => {
+    //     if(login) {
+    //         if(team !== null) {
+    //             navigate({
+    //                 to: "/input",
+    //             });
+    //         } else {
+    //             navigate({
+    //                 to: "/select",
+    //             });
+    //         }
+    //     }
+    // },[login, team, navigate]);
 
     if (loading) {
         return (

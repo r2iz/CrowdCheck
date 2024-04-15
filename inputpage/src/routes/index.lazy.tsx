@@ -7,6 +7,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth, signInWithGoogle, signInWithGooglePopup } from "../firebase/auth";
 
 import { useEffect, useState } from "react";
+import { set } from "firebase/database";
 
 export const Route = createLazyFileRoute("/")({
     component: Index,

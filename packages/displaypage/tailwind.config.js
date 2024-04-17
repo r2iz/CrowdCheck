@@ -5,7 +5,17 @@ export default {
         "./src/**/*.{js,ts,jsx,tsx}",
     ],
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                body: [
+                    'Meiryo',
+                ],
+                tsukushi: [
+                    'Tsukushi A Round Gothic',
+                    'sans-serif',
+                ],
+            },
+        },
     },
     plugins: [],
 };

@@ -20,14 +20,16 @@ function Index() {
 
     const navigate = useNavigate();
 
-    const onclick = () => {
+    const onclick = async () => {
         setLoading(true);
         console.log("onclick");
         try {
             console.log("try");
-            signInWithGoogle();
+            await signInWithGoogle();
         } catch (error) {
             alert(error);
+        } finally {
+            setLoading(false);
         }
     };
 

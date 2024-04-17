@@ -4,8 +4,8 @@ import { app } from "./init";
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
-const signInWithGoogle = () => {
-    signInWithRedirect(auth, provider);
+const signInWithGoogle = async () => {
+    await signInWithRedirect(auth, provider);
 };
 
 const signInWithGooglePopup = async () => {

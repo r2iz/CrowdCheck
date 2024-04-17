@@ -3,11 +3,11 @@ import { Header } from "./-components/Header";
 import { useRecoilState } from "recoil";
 import { loginState, userState, selectedTeam } from "../state";
 
-import { onAuthStateChanged } from "firebase/auth";
-import { auth, signInWithGoogle, signInWithGooglePopup } from "../firebase/auth";
+import { onAuthStateChanged, signInWithRedirect } from "firebase/auth";
+import { auth } from "../firebase/auth";
 
 import { useEffect, useState } from "react";
-import { set } from "firebase/database";
+import { GoogleAuthProvider } from "firebase/auth";
 
 export const Route = createLazyFileRoute("/")({
     component: Index,
@@ -21,17 +21,8 @@ function Index() {
 
     const navigate = useNavigate();
 
-    const onclick = async () => {
-        setLoading(true);
-        console.log("onclick");
-        try {
-            console.log("try");
-            await signInWithGoogle();
-        } catch (error) {
-            alert(error);
-        } finally {
-            setLoading(false);
-        }
+    const onclick = () => {
+        signInWithRedirect(auth, new GoogleAuthProvider());
     };
 
     onAuthStateChanged(auth, (user) => {
@@ -54,20 +45,6 @@ function Index() {
             setLoading(false);
         }
     });
-
-    // useEffect(() => {
-    //     if(login) {
-    //         if(team !== null) {
-    //             navigate({
-    //                 to: "/input",
-    //             });
-    //         } else {
-    //             navigate({
-    //                 to: "/select",
-    //             });
-    //         }
-    //     }
-    // },[login, team, navigate]);
 
     if (loading) {
         return (

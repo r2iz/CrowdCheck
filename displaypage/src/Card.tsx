@@ -45,13 +45,13 @@ export const Card = (props: CardProps) => {
     // 背景色を取得
     let cardCSS;
     switch (props.congestion) {
-        case "low":
+        case "Low":
             cardCSS = LowCardCSS;
             break;
-        case "medium":
+        case "Medium":
             cardCSS = MediumCardCSS;
             break;
-        case "high":
+        case "High":
             cardCSS = HighCardCSS;
             break;
         default:

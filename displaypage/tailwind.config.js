@@ -8,12 +8,16 @@ export default {
         extend: {
             fontFamily: {
                 body: [
-                    'Meiryo',
+                    "Meiryo",
                 ],
                 tsukushi: [
-                    'Tsukushi A Round Gothic',
-                    'sans-serif',
+                    "Tsukushi A Round Gothic",
+                    "sans-serif",
                 ],
+            },
+            colors: {
+                "theme-deep-blue": "#002F67",
+                "theme-orange": "#DB4D03",
             },
         },
     },

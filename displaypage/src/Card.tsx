@@ -60,7 +60,7 @@ export const Card = (props: CardProps) => {
 
     return (
         <div className="m-4">
-            <div className = {cardCSS}>
+            <div className={cardCSS}>
                 <a href="#" className="block max-w-sm m-4 h-56 w-80 ">
                     <div className="px-6 py-4">
                         <div className="flex justify-between">

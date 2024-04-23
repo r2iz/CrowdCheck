@@ -62,6 +62,6 @@ export const data = {
         // { name: '芸術講座', type: '鑑賞', classroom: '技術工作室', id: null },
         { name: "リアル野球盤", type: "体験", classroom: "グラウンド", id: 65049, exhibitionId: 45 },
         { name: "SeSDA", type: "体験", classroom: "グラウンド", id: 64022, exhibitionId: 46 },
-        { name: "大天才とるか様の実験部", type: "体験", classroom: "X", id: 65150, exhibitionId: 47 },
+        { name: "テスト部", type: "体験", classroom: "X", id: 65150, exhibitionId: 47 },
     ],
 };

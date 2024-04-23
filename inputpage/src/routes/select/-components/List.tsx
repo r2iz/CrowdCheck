@@ -26,7 +26,7 @@ export const List = () => {
         <div className="flex items-center mb-6">
             <select onChange={(e) => onChanged(e)} className="flex items-center justify-center mt-1 w-18 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" name="" id="">
                 <option value="" selected hidden>選択してください</option>
-                {items.filter(item => item.id === user).map((item) => (
+                {items.map((item) => (
                     <option key={item.name} value={item.name}>
                         {item.name}
                     </option>

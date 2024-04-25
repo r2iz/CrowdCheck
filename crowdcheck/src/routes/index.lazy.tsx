@@ -63,14 +63,13 @@ function Index() {
                     }}
                 />
             </div>
-            <header className="h-12 flex justify-between items-center pl-4 w-full absolute mt-6">
+            <header className="h-12 flex flex-col sm:flex-row justify-between items-center pl-4 w-full absolute mt-6">
                 <h1 className="text-5xl text-gray-200 font-semibold">混雑状況 / {floors[currentFloor] === 5 ? "その他" : `${floors[currentFloor]}階`}</h1>
-                <div>
+                <div className="flex flex-wrap justify-center sm:justify-end">
                     {floors.map((floor, index) => (
                         <button
                             key={index}
-                            className={`
-                            px-4 py-2 ${currentFloor === index ? "text-blue-500" : "text-gray-500"}`}
+                            className={`px-4 py-2 m-1 ${currentFloor === index ? "text-blue-500" : "text-gray-500"}`}
                             onClick={() => setCurrentFloor(index)}
                         >
                             {floor}階

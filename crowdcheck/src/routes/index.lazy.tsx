@@ -77,7 +77,7 @@ function Index() {
                     ))}
                 </div>
             </header>
-            <div className="flex flex-wrap justify-center mt-24 overflow-auto" style={{ maxHeight: "500px" }}>
+            <div className="flex flex-wrap justify-center mt-20 overflow-auto" style={{ maxHeight: "1000px" }}>
                 {uniqueItems.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage).map((congestion) => {
                     const exhibition = data.items.find(d => d.exhibitionId === congestion?.exhibitionId);
                     if (exhibition) {

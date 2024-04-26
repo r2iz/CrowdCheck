@@ -16,7 +16,7 @@ function Index() {
     const [currentFloor, setCurrentFloor] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
-    const floors = [...new Set(data.items.map(item => item.classroom))].sort();
+    const floors = [...new Set(data.items.map(item => item?.floor))].sort();
     const itemsPerPage = 10;
 
     useEffect(() => {

@@ -72,7 +72,7 @@ function Index() {
                             className={`px-4 py-2 m-1 ${currentFloor === index ? "text-blue-500" : "text-gray-500"}`}
                             onClick={() => setCurrentFloor(index)}
                         >
-                            {floor}階
+                            {floor === 5 ? "その他" : floor+"階"}
                         </button>
                     ))}
                 </div>

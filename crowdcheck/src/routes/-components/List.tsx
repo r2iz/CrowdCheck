@@ -3,6 +3,7 @@ interface ListProps {
     type: string;
     classroom: string;
     congestion: string;
+    exp: string | undefined;
 }
 
 export function List(props: ListProps) {
@@ -21,6 +22,9 @@ export function List(props: ListProps) {
                     </h2>
                     <p className="leading-relaxed text-gray-200">
                         {props.classroom}
+                    </p>
+                    <p className="mt-2 text-gray-200">
+                        {props.exp}
                     </p>
                 </div>
             </div>

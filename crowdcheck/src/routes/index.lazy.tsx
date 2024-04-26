@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { createLazyFileRoute } from "@tanstack/react-router";
 import { data } from "../libs/list";
+import { expData } from "../libs/exp";
 import { getData, Congestion } from "../libs/fetch";
 import { List } from "./-components/List";
+import ReactPullToRefresh from "react-pull-to-refresh";
 // import { Card } from "./-components/Card";
 
 export const Route = createLazyFileRoute("/")({
@@ -20,14 +22,7 @@ function Index() {
     useEffect(() => {
         // 初回レンダリング時にデータを取得
         getData().then(data => setCongestions(data));
-
-        // 10分ごとにデータを更新
-        const timer = setInterval(() => {
-            getData().then(data => setCongestions(data));
-        }, 10 * 60 * 1000); // 10分をミリ秒に変換
         setIsLoading(false);
-        // コンポーネントのクリーンアップ時にタイマーをクリア
-        return () => clearInterval(timer);
     }, []);
 
     const uniqueItems = congestions.reduce((unique, congestion) => {
@@ -37,6 +32,10 @@ function Index() {
         }
         return unique;
     }, [] as Congestion[]);
+
+    const handleRefresh = async () => {
+        getData().then(data => setCongestions(data));
+    };
 
     return (
         <div className="relative isolate overflow-hidden bg-gray-800 h-screen w-full">
@@ -78,18 +77,22 @@ function Index() {
                     ))}
                 </div>
             </header>
-            <div className="flex flex-wrap justify-center mt-20 overflow-auto" style={{ maxHeight: "1000px" }}>
-            {isLoading ? (
-                <div className="loader">Loading...</div>
-            ) : (
-                uniqueItems.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage).map((congestion) => {
-                    const exhibition = data.items.find(d => d.exhibitionId === congestion?.exhibitionId);
-                    if (exhibition) {
-                        return <List name={exhibition.name} congestion={congestion?.nowCongestion} type={exhibition.type} classroom={exhibition.classroom} />;
-                    }
-                })
-            )}
-        </div>
+            <ReactPullToRefresh onRefresh={handleRefresh}>
+                <div className="flex flex-wrap justify-center mt-20 overflow-auto" style={{ maxHeight: "1000px" }}>
+
+                    {isLoading ? (
+                        <div className="loader">Loading...</div>
+                    ) : (
+                        uniqueItems.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage).map((congestion) => {
+                            const exhibition = data.items.find(d => d.exhibitionId === congestion?.exhibitionId);
+                            const exp = expData.items.find(d => d.id === exhibition?.id);
+                            if (exhibition) {
+                                return <List name={exhibition.name} congestion={congestion?.nowCongestion} type={exhibition.type} classroom={exhibition.classroom} exp={exp?.exp} />;
+                            }
+                        })
+                    )}
+                </div>
+            </ReactPullToRefresh>
         </div>
     );
 }

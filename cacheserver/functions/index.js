@@ -40,6 +40,8 @@ exports.getAdminCongestion = functions.https.onRequest(async (request, response)
             updatedDate: doc.data().updatedDate,
         });
     });
+    const cacheAge = 120;
+    response.set("Cache-Control", `public, max-age=${cacheAge}`);
     response.set('Access-Control-Allow-Headers', '*');
     response.set('Access-Control-Allow-Origin', '*');
     response.set('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST');

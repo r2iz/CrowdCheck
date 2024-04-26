@@ -2,3 +2,4 @@ packages:
   - 'inputpage'
   - 'displaypage'
   - 'crowdcheck'
+  - 'check'

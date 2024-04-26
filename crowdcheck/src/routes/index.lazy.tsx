@@ -13,6 +13,7 @@ function Index() {
     const [congestions, setCongestions] = useState<Congestion[]>([]);
     const [currentFloor, setCurrentFloor] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
+    const [isLoading, setIsLoading] = useState(true);
     const floors = [...new Set(data.items.map(item => item.floor))].sort();
     const itemsPerPage = 10;
 
@@ -24,7 +25,7 @@ function Index() {
         const timer = setInterval(() => {
             getData().then(data => setCongestions(data));
         }, 10 * 60 * 1000); // 10分をミリ秒に変換
-
+        setIsLoading(false);
         // コンポーネントのクリーンアップ時にタイマーをクリア
         return () => clearInterval(timer);
     }, []);
@@ -78,13 +79,17 @@ function Index() {
                 </div>
             </header>
             <div className="flex flex-wrap justify-center mt-20 overflow-auto" style={{ maxHeight: "1000px" }}>
-                {uniqueItems.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage).map((congestion) => {
+            {isLoading ? (
+                <div className="loader">Loading...</div>
+            ) : (
+                uniqueItems.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage).map((congestion) => {
                     const exhibition = data.items.find(d => d.exhibitionId === congestion?.exhibitionId);
                     if (exhibition) {
                         return <List name={exhibition.name} congestion={congestion?.nowCongestion} type={exhibition.type} classroom={exhibition.classroom} />;
                     }
-                })}
-            </div>
+                })
+            )}
+        </div>
         </div>
     );
 }

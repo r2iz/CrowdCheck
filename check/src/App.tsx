@@ -10,7 +10,12 @@ async function fetchData() {
   const data = await response.json();
   return data.sort(
     (a: Congestion, b: Congestion) =>
-      new Timestamp(a.updatedDate._seconds, a.updatedDate._nanoseconds).toDate().getTime() - new Timestamp(b.updatedDate._seconds, b.updatedDate._nanoseconds).toDate().getTime()
+      new Timestamp(a.updatedDate._seconds, a.updatedDate._nanoseconds)
+        .toDate()
+        .getTime() -
+      new Timestamp(b.updatedDate._seconds, b.updatedDate._nanoseconds)
+        .toDate()
+        .getTime()
   );
 }
 
@@ -57,8 +62,8 @@ function List(props: ListProps) {
 function App() {
   const [congestions, setCongestions] = useState<Congestion[]>([]);
   const fetchDataAndUpdate = async () => {
-    let data = await fetchData();
-    data = data.sort((a, b) => b.updatedAt.getTime() - a.updatedAt.getTime());
+    const data = await fetchData();
+    //data = data.sort((a, b) => b.updatedAt.getTime() - a.updatedAt.getTime());
     setCongestions(data);
   };
 
@@ -91,7 +96,10 @@ function App() {
                 congestion={congestion?.nowCongestion}
                 type={exhibition.type}
                 classroom={exhibition.classroom}
-                updatedAt={new Timestamp(congestion.updatedDate._seconds, congestion.updatedDate._nanoseconds).toDate()}
+                updatedAt={new Timestamp(
+                  congestion.updatedDate._seconds,
+                  congestion.updatedDate._nanoseconds
+                ).toDate()}
               />
             );
           }

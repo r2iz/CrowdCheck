@@ -18,7 +18,7 @@ exports.getCongestion = functions.https.onRequest(async (request, response) =>{
             updatedDate: doc.data().updatedDate,
         });
     });
-    const cacheAge = 600;
+    const cacheAge = 180;
     response.set("Cache-Control", `public, max-age=${cacheAge}`);
     response.set('Access-Control-Allow-Headers', '*');
     response.set('Access-Control-Allow-Origin', '*');

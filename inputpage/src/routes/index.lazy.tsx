@@ -28,10 +28,6 @@ function Index() {
     onAuthStateChanged(auth, (user) => {
         if(user) {
             setLogin(true);
-            const id: string = user.email!.slice(0, 5);
-            if(Number(id)) {
-                setUser(Number(id));
-            }
             navigate({
                 to: "/select",
             });

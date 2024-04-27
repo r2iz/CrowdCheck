@@ -16,7 +16,7 @@ function Index() {
     const [currentFloor, setCurrentFloor] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
-    const floors = [...new Set(data.items.map(item => item.floor))].sort();
+    const floors = [...new Set(data.items.map(item => item?.floor))].sort();
     const itemsPerPage = 10;
 
     useEffect(() => {
@@ -64,7 +64,7 @@ function Index() {
                 />
             </div>
             <header className="h-12 flex flex-col sm:flex-row justify-between items-center pl-4 w-full absolute mt-6">
-                <h1 className="text-5xl text-gray-200 font-semibold">混雑状況 / {floors[currentFloor] === 5 ? "その他" : `${floors[currentFloor]}階`}</h1>
+                <h1 className="text-5xl text-gray-200 font-semibold">混雑状況 / {floors[currentFloor] === 5 ? "その他" : floors[currentFloor] === 6 ? "ピロティ" : `${floors[currentFloor]}階`}</h1>
                 <div className="flex flex-wrap justify-center sm:justify-end">
                     {floors.map((floor, index) => (
                         <button
@@ -72,7 +72,7 @@ function Index() {
                             className={`px-4 py-2 m-1 ${currentFloor === index ? "text-blue-500" : "text-gray-500"}`}
                             onClick={() => setCurrentFloor(index)}
                         >
-                            {floor === 5 ? "その他" : floor+"階"}
+                            {floor === 5 ? "その他" : floor === 6 ? "ピロティ" : `${floor}階`}
                         </button>
                     ))}
                 </div>

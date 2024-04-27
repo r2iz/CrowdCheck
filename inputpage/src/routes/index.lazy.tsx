@@ -3,7 +3,7 @@ import { Header } from "./-components/Header";
 import { useRecoilState } from "recoil";
 import { loginState, userState, selectedTeam } from "../state";
 
-import { onAuthStateChanged, signInWithRedirect } from "firebase/auth";
+import { onAuthStateChanged, signInWithPopup, signInWithRedirect } from "firebase/auth";
 import { auth } from "../firebase/auth";
 
 import { useEffect, useState } from "react";
@@ -28,10 +28,6 @@ function Index() {
     onAuthStateChanged(auth, (user) => {
         if(user) {
             setLogin(true);
-            const id: string = user.email!.slice(0, 5);
-            if(Number(id)) {
-                setUser(Number(id));
-            }
             navigate({
                 to: "/select",
             });

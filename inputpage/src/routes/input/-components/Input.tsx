@@ -19,8 +19,8 @@ export const InputBody = () => {
             return;
         }
         const now = new Date();
-        if (lastSubmittedDate && now.getTime() - lastSubmittedDate.getTime() < 5 * 60 * 1000) {
-            alert("5分以内に送信したため、送信できません");
+        if (lastSubmittedDate && now.getTime() - lastSubmittedDate.getTime() < 0.5 * 60 * 1000) {
+            alert("30秒以内に送信したため、送信できません");
             return;
         }
         await set(new Date(), congestion, exhibitionId);

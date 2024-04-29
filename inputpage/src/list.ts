@@ -50,7 +50,7 @@ export const data = {
         { name: "物理科学部", type: "体験", classroom: "物理実験室", id: 63123, exhibitionId: 36},
         { name: "ポケモンセンターSeiko", type: "鑑賞", classroom: "中3A", id: 63065, exhibitionId: 37},
         { name: "カードゲーム同好会", type: "体験", classroom: "中3B", id: 63190, exhibitionId: 38},
-        { name: "食品店舗(たぶん音楽喫茶)", type: "食品", classroom: "中3C", id: 63106, exhibitionId: 39},
+        { name: "音楽喫茶", type: "食品", classroom: "中3C", id: 63106, exhibitionId: 39},
         { name: "地理歴史巡見部", type: "鑑賞", classroom: "中3D", id: 63039, exhibitionId: 40},
         { name: "地理歴史巡見部", type: "鑑賞", classroom: "中3E", id: 63039, exhibitionId: 41},
         // { name: '手荷物預かり所', type: 'その他', classroom: '中3UT', id: 0 },

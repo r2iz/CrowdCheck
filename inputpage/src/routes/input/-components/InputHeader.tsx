@@ -32,7 +32,6 @@ export const InputHeader = () => {
                 </a>
                 <div className="flex items-center">
                     <button onClick={handleBack} className="mr-6 text-xl rounded bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">←</button>
-                    <span className="mr-6 text-xl text-gray-900">最終送信時刻: {text}</span>
                     <span className="mr-6 text-xl text-gray-900">団体: {team}</span>
                 </div>
             </div>

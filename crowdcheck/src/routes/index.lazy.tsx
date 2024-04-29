@@ -4,8 +4,7 @@ import { data } from "../libs/list";
 import { expData } from "../libs/exp";
 import { getData, Congestion } from "../libs/fetch";
 import { List } from "./-components/List";
-import ReactPullToRefresh from "react-pull-to-refresh";
-// import { Card } from "./-components/Card";
+
 
 export const Route = createLazyFileRoute("/")({
     component: Index,
@@ -14,10 +13,10 @@ export const Route = createLazyFileRoute("/")({
 function Index() {
     const [congestions, setCongestions] = useState<Congestion[]>([]);
     const [currentFloor, setCurrentFloor] = useState(0);
-    const [currentPage, setCurrentPage] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
     const floors = [...new Set(data.items.map(item => item?.floor))].sort();
-    const itemsPerPage = 10;
+    const [menuOpen, setMenuOpen] = useState(false);
+    const toggleMenu = () => setMenuOpen(!menuOpen);
 
     useEffect(() => {
         // 初回レンダリング時にデータを取得
@@ -32,10 +31,6 @@ function Index() {
         }
         return unique;
     }, [] as Congestion[]);
-
-    const handleRefresh = async () => {
-        getData().then(data => setCongestions(data));
-    };
 
     return (
         <div className="relative isolate overflow-hidden bg-gray-800 h-screen w-full">
@@ -64,12 +59,19 @@ function Index() {
                 />
             </div>
             <header className="h-12 flex flex-col sm:flex-row justify-between items-center pl-4 w-full absolute mt-6">
-                <h1 className="text-5xl text-gray-200 font-semibold">混雑状況 / {floors[currentFloor] === 5 ? "その他" : floors[currentFloor] === 6 ? "ピロティ" : `${floors[currentFloor]}階`}</h1>
-                <div className="flex flex-wrap justify-center sm:justify-end">
+                <h1 className="text-4xl text-gray-200 font-semibold">混雑状況 / {floors[currentFloor] === 5 ? "その他" : floors[currentFloor] === 6 ? "ピロティ" : `${floors[currentFloor]}階`}</h1>
+                <div className="sm:hidden absolute top-0 right-0 mt-2 mr-4">
+                    <button onClick={toggleMenu}>
+                        <svg className="h-6 w-6 fill-current text-gray-500" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div className={`flex flex-wrap justify-center sm:justify-end ${menuOpen ? "" : "hidden sm:flex"}`}>
                     {floors.map((floor, index) => (
                         <button
                             key={index}
-                            className={`px-4 py-2 m-1 ${currentFloor === index ? "text-blue-500" : "text-gray-500"}`}
+                            className={`px-4 py-2 m-1 flex-shrink-0 ${currentFloor === index ? "text-blue-500" : "text-gray-500"}`}
                             onClick={() => setCurrentFloor(index)}
                         >
                             {floor === 5 ? "その他" : floor === 6 ? "ピロティ" : `${floor}階`}
@@ -77,22 +79,22 @@ function Index() {
                     ))}
                 </div>
             </header>
-            <ReactPullToRefresh onRefresh={handleRefresh}>
-                <div className="flex flex-wrap justify-center mt-20 overflow-auto" style={{ maxHeight: "1000px" }}>
-
-                    {isLoading ? (
-                        <div className="loader">Loading...</div>
-                    ) : (
-                        uniqueItems.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage).map((congestion) => {
-                            const exhibition = data.items.find(d => d.exhibitionId === congestion?.exhibitionId);
-                            const exp = expData.items.find(d => d.id === exhibition?.id);
-                            if (exhibition) {
-                                return <List name={exhibition.name} congestion={congestion?.nowCongestion} type={exhibition.type} classroom={exhibition.classroom} exp={exp?.exp} />;
-                            }
-                        })
-                    )}
-                </div>
-            </ReactPullToRefresh>
+            <div className="mt-24 h-screen overflow-auto">
+                {isLoading ? (
+                    <div className="loader">Loading...</div>
+                ) : (
+                    uniqueItems.filter((congestion) => {
+                        const exhibition = data.items.find(d => d.exhibitionId === congestion?.exhibitionId);
+                        return exhibition?.floor === floors[currentFloor];
+                    }).map((congestion) => {
+                        const exhibition = data.items.find(d => d.exhibitionId === congestion?.exhibitionId);
+                        const exp = expData.items.find(d => d.id === exhibition?.id);
+                        if (exhibition) {
+                            return <List name={exhibition.name} congestion={congestion?.nowCongestion} type={exhibition.type} classroom={exhibition.classroom} exp={exp?.exp} />;
+                        }
+                    })
+                )}
+            </div>
         </div>
     );
 }

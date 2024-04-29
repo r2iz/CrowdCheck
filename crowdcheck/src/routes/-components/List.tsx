@@ -1,6 +1,5 @@
 import { faPerson } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Congestion } from '../../libs/fetch';
 
 interface ListProps {
     name: string;
@@ -23,19 +22,31 @@ function Icons(props: iconsProps) {
                 <FontAwesomeIcon icon={faPerson} size="2x" style={{color: "red"}} className="text-gray-800" />
             </div>
         );
-    } else if (props.congestion === "Middle") {
+    } else if (props.congestion === "Medium") {
         return (
             <div className="flex justify-center space-x-2">
                 <FontAwesomeIcon icon={faPerson} size="2x" style={{color: "yellow"}} className="text-gray-800" />
                 <FontAwesomeIcon icon={faPerson} size="2x" style={{color: "yellow"}} className="text-gray-800" />
             </div>
         );
-    } else {
+    } else if(props.congestion === "Low") {
         return (
             <div className="flex justify-center">
                 <FontAwesomeIcon icon={faPerson} size="2x" style={{color: "greenyellow"}} className="text-gray-800" />
             </div>
         );
+    } else if(props.congestion === "Stop") {
+        return (
+            <div className="flex justify-center space-x-2">
+                <FontAwesomeIcon icon={faPerson} size="2x" style={{color: "red"}} className="text-gray-800" />
+                <FontAwesomeIcon icon={faPerson} size="2x" style={{color: "red"}} className="text-gray-800" />
+                <FontAwesomeIcon icon={faPerson} size="2x" style={{color: "red"}} className="text-gray-800" />
+                <div className="text-red-600 font-bold text-xl">
+                    販売停止
+                </div>
+            </div>
+        );
+
     }
 }
 
@@ -50,7 +61,7 @@ export function List(props: ListProps) {
                     <span className="text-gray-200 text-sm">{props.congestion}</span>
                 </div>
                 <div className="md:flex-grow">
-                    <div className="flex items-center space-x-4"> {/* 追加 */}
+                    <div className="flex items-center space-x-4">
                         <h2 className="text-2xl font-medium text-gray-200 title-font mb-2">
                             {props.name}
                         </h2>

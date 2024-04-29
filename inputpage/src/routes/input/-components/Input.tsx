@@ -1,5 +1,6 @@
 import { selectedTeamIdState, congestionState, lastSubmittedDateState } from "../../../state";
 import { useRecoilState } from "recoil";
+import { data } from "../../../list";
 
 import { set } from "../../../firebase/db/set";
 
@@ -16,11 +17,6 @@ export const InputBody = () => {
         setSubmittedDate(new Date());
         if (!congestion || !exhibitionId) {
             alert("混雑度を選択してください");
-            return;
-        }
-        const now = new Date();
-        if (lastSubmittedDate && now.getTime() - lastSubmittedDate.getTime() < 0.5 * 60 * 1000) {
-            alert("30秒以内に送信したため、送信できません");
             return;
         }
         await set(new Date(), congestion, exhibitionId);
@@ -49,6 +45,14 @@ export const InputBody = () => {
                 >
                     高
                 </button>
+                {data.items.find((item) => item.exhibitionId === exhibitionId)?.classroom === "ピロティ" && (
+                    <button
+                        className={`px-4 py-2 border m-8 border-red-600 rounded text-red-600 ${congestion === "Stop" ? "bg-red-600 text-white" : "text-red-600"}`}
+                        onClick={() => handleClick("Stop")}
+                    >
+                    販売停止
+                    </button>
+                )}
             </div>
             <button
                 className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-500"
